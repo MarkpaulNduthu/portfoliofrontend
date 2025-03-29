@@ -54,49 +54,50 @@ function validateandsubmit() {
         responseDiv.style.color = "red";
         return;
     }
-    const formdata = JSON.stringify({
-        name: name,
-        email: email,
-        message: message,
+const formdata = JSON.stringify({
+    name: name,
+    email: email,
+    message: message,
+});
+
+try {
+    fetch("https://mwema-portfolio.vercel.app/php/index.php", {
+        method: 'POST',
+        headers: { // Corrected the header definition
+            'Content-Type': 'application/json', // Fixed the header key
+        },
+        body: formdata,
     })
-    // formdata.append("name", name);
-    // formdata.append("email", email);
-    // formdata.append("message", message);
-    try {
-        fetch("https://mwema-portfolio.vercel.app/php/index.php",
-            {
-                method: 'POST',
-                body: formdata,
-            }
-        ).then(response => {
-            if (response.ok) {
-                console.log("good response");
-                console.log(response);
-                return response.json();
-            } else {
-                console.log(respose);
-                throw new Error('Network response was not ok');
-            }
-        })
-            .then(data => {
-                console.log("trying to verify data....");
-                if (data && data.message) {
-                    console.log("required data present");
-                    responseDiv.textContent = data.message;
-                    responseDiv.style.color = "green";
-                    sendEmail();
-                    document.getElementById('contacts-dev').reset();
-                }else{
-                    console.log(data);
-                    console.log("required data not present");
-                }
-            }).catch(error => {
-                responseDiv.textContent = "Somethinng went wrong";
-                responseDiv.style.color = "red";
-                console.log(error);
-            });
-    } catch (error) {
-        console.log("error : " + error);
-    }
+    .then(response => {
+        if (response.ok) {
+            console.log("Good response");
+            return response.json();
+        } else {
+            console.log(response); // Fixed typo from `respose` to `response`
+            throw new Error('Network response was not ok');
+        }
+    })
+    .then(data => {
+        console.log("Trying to verify data....");
+        if (data && data.message) {
+            console.log("Required data present");
+            responseDiv.textContent = data.message;
+            responseDiv.style.color = "green";
+            sendEmail(); // Ensure this function is defined elsewhere
+            document.getElementById('contacts-dev').reset();
+        } else {
+            console.log(data);
+            console.log("Required data not present");
+        }
+    })
+    .catch(error => {
+        responseDiv.textContent = "Something went wrong"; // Fixed typo from "Somethinng"
+        responseDiv.style.color = "red";
+        console.log(error);
+    });
+} catch (error) {
+    console.log("Error: " + error);
+}
+
 
 }
