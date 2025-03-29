@@ -68,6 +68,7 @@ try {
         headers: { // Corrected the header definition
             'Content-Type': 'application/json', // Fixed the header key
         },
+        mode: 'no-cors',
         body: formdata,
     })
     .then(response => {
