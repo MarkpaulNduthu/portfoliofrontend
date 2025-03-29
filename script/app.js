@@ -63,7 +63,7 @@ function validateandsubmit() {
     // formdata.append("email", email);
     // formdata.append("message", message);
     try {
-        fetch("http://mwemaportfolio.great-site.net/index.php",
+        fetch("https://mwemaportfolio.great-site.net/index.php",
             {
                 method: 'POST',
                 body: formdata,
