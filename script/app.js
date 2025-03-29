@@ -62,45 +62,8 @@ function validateandsubmit() {
     // formdata.append("name", name);
     // formdata.append("email", email);
     // formdata.append("message", message);
-    try {
-        fetch("https://mwemaportfolio.great-site.net/index.php",
-            {
-                method: 'POST',
-                body: formdata,
-            }
-        ).then(response => {
-            if (response.ok) {
-                console.log("good response");
-                console.log(response);
-                return response.json();
-            } else {
-                console.log(respose);
-                throw new Error('Network response was not ok');
-            }
-        })
-            .then(data => {
-                console.log("trying to verify data....");
-                if (data && data.message) {
-                    console.log("required data present");
-                    responseDiv.textContent = data.message;
-                    responseDiv.style.color = "green";
-                    sendEmail();
-                    document.getElementById('contacts-dev').reset();
-                }else{
-                    console.log(data);
-                    console.log("required data not present");
-                }
-            }).catch(error => {
-                responseDiv.textContent = "Somethinng went wrong";
-                responseDiv.style.color = "red";
-                console.log(error);
-            });
-    } catch (error) {
-        console.log("error : " + error);
-    }
-
 try {
-    fetch("https://mwema-portfolio.vercel.app/php/index.php", {
+    fetch("https://mwemaportfolio.great-site.net/index.php", {
         method: 'POST',
         headers: { // Corrected the header definition
             'Content-Type': 'application/json', // Fixed the header key
