@@ -65,10 +65,9 @@ function validateandsubmit() {
 try {
     fetch("https://mwemaportfolio.great-site.net/index.php", {
         method: 'POST',
-        headers: { // Corrected the header definition
-            'Content-Type': 'application/json', // Fixed the header key
+        headers: {
+            'Content-Type': 'application/json',
         },
-        mode: 'no-cors',
         body: formdata,
     })
     .then(response => {
@@ -76,7 +75,7 @@ try {
             console.log("Good response");
             return response.json();
         } else {
-            console.log(response); // Fixed typo from `respose` to `response`
+            console.log(response); 
             throw new Error('Network response was not ok');
         }
     })
