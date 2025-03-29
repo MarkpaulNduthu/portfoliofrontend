@@ -63,7 +63,7 @@ function validateandsubmit() {
     // formdata.append("email", email);
     // formdata.append("message", message);
 try {
-    fetch("https://mwemaportfolio.great-site.net/index.php", {
+    fetch("https://mwema-backend-portfolio.netlify.app/php/index.php", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
