@@ -180,7 +180,7 @@ ul {
 .section-hero {
     height: auto;
     width: 100%;
-    margin-top: 2000px;
+    margin-top: 2100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -300,12 +300,13 @@ ul {
 /* Hero section end */
 /* contact form start*/
 .contact-form {
+    display: none;
     position: fixed;
     width: 500px;
     height: 100%;
     top: -320px;
     left: 40%;
-    /* transform: translate(-10%, 50%); */
+    transform: translate(-10%, 50%);
     z-index: 1000;
     border-radius: 10px;
     background-color: #3f47b288;
@@ -327,7 +328,7 @@ ul {
     width: 100%;
     height: 100%;
     position: relative;
-    margin-top: -170px;
+    /* margin-top: -170px; */
 }
 
 .contact-form form label {
@@ -892,10 +893,10 @@ ul {
     }
 
     .section-hero {
-        margin-top: 3050px;
+        margin-top: 2970px;
         height: 80%;
         min-width: 100vw;
-        /* overflow: hidden; */
+        overflow: visible;
     }
 
     .hero-section {
@@ -917,11 +918,14 @@ ul {
     }
 
     .contact-form {
-        right: 0;
+        margin-top: -170px;
+        /* right: 0; */
+        top: -70;
         left: 0;
-        width: 100%;
-        height: 100%;
-        margin-top: 2000px;
+        width: 115%;
+        height: 105%;
+        /* margin-top: 2000px; */
+        display: none;
     }
 
     #about {
@@ -955,8 +959,24 @@ ul {
 
     .available {
         width: 100%;
+        border: none;
     }
 
+    .projects-section{
+        margin-bottom: 100px;
+        margin-top: 0px;
+    }
+
+    .projects-section h2{
+        padding: 20px 0;
+        background: linear-gradient(to right, rgb(6, 152, 230), rgb(7, 29, 195), rgb(3, 19, 192), rgb(6, 152, 230));
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-size: 300%;
+        font-size: 40px;
+        animation: moveBackground 5s ease infinite alternate;
+    }
     .project1,
     .project2,
     .project3 {
@@ -968,6 +988,7 @@ ul {
     }
 
     .footer {
+        margin-top: 100px;
         width: 100vw;
         align-items: center;
         justify-content: center;
