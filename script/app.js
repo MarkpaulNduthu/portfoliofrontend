@@ -99,4 +99,44 @@ function validateandsubmit() {
         console.log("error : " + error);
     }
 
+try {
+    fetch("https://mwema-portfolio.vercel.app/php/index.php", {
+        method: 'POST',
+        headers: { // Corrected the header definition
+            'Content-Type': 'application/json', // Fixed the header key
+        },
+        body: formdata,
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Good response");
+            return response.json();
+        } else {
+            console.log(response); // Fixed typo from `respose` to `response`
+            throw new Error('Network response was not ok');
+        }
+    })
+    .then(data => {
+        console.log("Trying to verify data....");
+        if (data && data.message) {
+            console.log("Required data present");
+            responseDiv.textContent = data.message;
+            responseDiv.style.color = "green";
+            sendEmail(); // Ensure this function is defined elsewhere
+            document.getElementById('contacts-dev').reset();
+        } else {
+            console.log(data);
+            console.log("Required data not present");
+        }
+    })
+    .catch(error => {
+        responseDiv.textContent = "Something went wrong"; // Fixed typo from "Somethinng"
+        responseDiv.style.color = "red";
+        console.log(error);
+    });
+} catch (error) {
+    console.log("Error: " + error);
+}
+
+
 }
